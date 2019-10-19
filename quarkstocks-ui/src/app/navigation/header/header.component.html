@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <div>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <span>
+    <a routerLink="/home">Home</a>
+  </span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <span>
+      <a routerLink="/ticker">Ticker</a>
+      </span>
+  <span>
+       <a routerLink="/stocks">Stocks</a>
+      </span>
+</mat-toolbar>
