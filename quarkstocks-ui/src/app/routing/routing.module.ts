@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {TickerComponent} from '../ticker/ticker.component';
+import {StockComponent} from "../stock/stock.component";
 
 
 const routes: Routes = [
-  { path: 'home', component: TickerComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: 'ticker', component: TickerComponent},
+  { path: 'stocks', component: StockComponent},
+  { path: '', redirectTo: '/stocks', pathMatch: 'full' }
 
 ];
 @NgModule({

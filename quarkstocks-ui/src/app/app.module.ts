@@ -6,10 +6,27 @@ import {ApiModule, BASE_PATH} from './api';
 import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 import {RoutingModule} from './routing/routing.module';
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import {HeaderComponent} from './navigation/header/header.component';
+import {SidenavListComponent} from './navigation/sidenav-list/sidenav-list.component';
+import {StockComponent} from './stock/stock.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {DatePipe} from "@angular/common";
 
 
 @NgModule({
@@ -17,7 +34,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     AppComponent,
     TickerComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +48,17 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [{provide: BASE_PATH, useValue: environment.API_BASE_PATH}],
+  providers: [{provide: BASE_PATH, useValue: environment.API_BASE_PATH}, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

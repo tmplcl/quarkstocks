@@ -11,7 +11,7 @@
  */
 
 
-export interface StockTicker { 
+export interface InlineResponse200 { 
     id?: number;
     readonly issuer?: string;
     symbol: string;

@@ -30,7 +30,7 @@ public class TickerResource {
                     schema = @Schema(type = SchemaType.ARRAY, implementation = Ticker.class)))
     @GET
     @Path("")
-    public List<Ticker> getTicker(@NotNull @QueryParam("page") Integer page, @NotNull @Max(1000) @QueryParam("size") Integer size) {
+    public List<Ticker> getTicker(@QueryParam("page") @DefaultValue("0") Integer page, @DefaultValue("100") @Max(1000) @QueryParam("size") Integer size) {
         return Ticker.findAll().page(Page.of(page, size)).list();
     }
 
@@ -53,7 +53,7 @@ public class TickerResource {
     @GET
     @Path("/{symbol}/stocks/{date}")
     public Stock getTickerBySymbol(@NotEmpty @PathParam("symbol") String symbol,
-                                   @NotEmpty @PathParam("date") String date) {
+                                   @NotEmpty @PathParam("date") @Schema(type = SchemaType.STRING, format = "date" ) String date) {
         return Stock.find("ticker.symbol = ?1 and date = ?2", symbol, LocalDate.parse(date)).firstResult();
     }
 
@@ -64,9 +64,9 @@ public class TickerResource {
                     schema = @Schema(type = SchemaType.ARRAY, implementation = Stock.class)))
     @GET
     @Path("/{symbol}/stocks")
-    public List<Stock> getStock(@NotEmpty @PathParam("symbol") String symbol,
-                                @QueryParam("from") String from,
-                                @QueryParam("to") String to) {
+    public List<Stock> getStock(@NotEmpty @PathParam("symbol") @DefaultValue("AAPL") String symbol,
+                                @QueryParam("from") @DefaultValue("2018-01-01") @Schema(type = SchemaType.STRING, format = "date" ) String from,
+                                @QueryParam("to") @DefaultValue("2019-01-01") @Schema(type = SchemaType.STRING, format = "date" ) String to) {
         return Stock.find("ticker.symbol = ?1 and date >= ?2 and date <= ?3", symbol, LocalDate.parse(from), LocalDate.parse(to)).list();
     }
 
